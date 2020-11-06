@@ -48,7 +48,7 @@ public class Controller {
 	}
 	
 	@GetMapping("/home/salesInfo")
-    public List<Orders> getSalesInfo(){
-        return orderRepo.findAll();
-    }
+    	public List<Orders> getSalesInfo(){
+       		 return orderRepo.findAll();
+    	}
 }
