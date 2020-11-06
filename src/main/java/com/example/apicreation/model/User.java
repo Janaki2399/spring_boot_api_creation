@@ -9,7 +9,7 @@ import javax.persistence.OneToMany;
 
 @Entity
 public class User {
-    @Id
+    	@Id
 	private int userId;
 	private String name;
 	private String email;
