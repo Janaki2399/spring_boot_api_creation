@@ -15,8 +15,8 @@ public class User {
 	private String email;
 	
 	@OneToMany(targetEntity = Orders.class,cascade = CascadeType.ALL)
-    @JoinColumn(name ="user_id",referencedColumnName = "userId")
-    private List<Orders> products;
+   	@JoinColumn(name ="user_id",referencedColumnName = "userId")
+   	private List<Orders> products;
 	
 	public int getUserId() {
 		return userId;
