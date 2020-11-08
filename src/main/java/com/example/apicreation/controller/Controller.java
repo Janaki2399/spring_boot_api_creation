@@ -18,37 +18,31 @@ import com.example.apicreation.model.User;
 @RestController
 public class Controller {
 
-	@Autowired
-	ItemRepo itemRepo;
-	@Autowired
-	UserRepo userRepo;
-	@Autowired
-	OrderRepo orderRepo;
-	
+	//Creating an item
 	@PostMapping("/home/createItem")
 	public Item createItem(@RequestBody Item item) {
 		itemRepo.save(item);
 		return item;
 	}
-	
+	//Fetching all the items
 	@GetMapping("/home/getItems")
 	public List<Item> getAllItem(){
 		return itemRepo.findAll();
 	}
-		
+	//Placing order	
 	@PostMapping("/home/placeOrder")
 	public User placeOrder(@RequestBody OrderRequest order) {
 		return userRepo.save(order.getUser());
 	}
-	
-	@PutMapping("/home/updateStatus")
-	public Orders updateStatus(@RequestBody Orders order) {
+	//Updating status
+	@PutMapping("/home/updateStatus/{orderId}")
+	public Orders updateStatus(@PathVariable("orderId") long id,@RequestBody Orders order) {
 		orderRepo.save(order);
 		return order;
 	}
-	
+	//Fetching the sales info
 	@GetMapping("/home/salesInfo")
-    	public List<Orders> getSalesInfo(){
-       		 return orderRepo.findAll();
-    	}
+        public List<Orders> getSalesInfo(){
+               return orderRepo.findAll();
+   	 }
 }
